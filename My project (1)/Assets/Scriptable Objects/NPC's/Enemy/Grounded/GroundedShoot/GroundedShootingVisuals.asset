@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba6feafa7bf82104ab5b23b75518aa9f, type: 3}
+  m_Name: GroundedShootingVisuals
+  m_EditorClassIdentifier: 
+  visuals: {fileID: 5559456995802466063, guid: 6175c6fd6a866944f93417068aeeb69c, type: 3}

@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c185e9b96e913fd448d4e42ded8f011f, type: 3}
+  m_Name: smg
+  m_EditorClassIdentifier: 
+  id: SMG
+  displayName: Smg
+  icon: {fileID: 21300000, guid: 7b69a262c2ba2f3408742ac927bc0509, type: 3}
+  prefab: {fileID: 1622340976061099287, guid: dd7b36189ddc26540b94b44442742183, type: 3}
+  equipSlot: 1
+  armorAdditiveModifier: 0
+  armorMultModifier: 0
+  damageAdditiveModifier: 0
+  damageMultModifier: 0
+  healthAdditiveModifier: 0
+  healthMultModifier: 0
+  buildsPrefab: {fileID: 0}
+  buildOffset: 0
+  buildTimerAdditiveModifier: 0
+  buildTimerMultModifier: 0
+  buildCoolDownAdditiveModifier: 0
+  buildCoolDownMultModifier: 0
+  rateOfFireAdditiveModifier: 30
+  rateOfFireMultModifier: 0
+  bulletVelocityAdditiveModifier: 35
+  bulletVelocityMultModifier: 0
+  clipSizeAdditiveModifier: 30
+  clipSizeMultModifier: 0
+  reloadTimeAdditiveModifier: 70
+  reloadTimeMultModifier: 0
+  meleeDamageAdditiveModifier: 0
+  meleeDamageMultModifier: 0
+  itemAmount: 1

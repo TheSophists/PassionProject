@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: c17d78c71da7e474f9f3ae1b13cad0de
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - enemyData: {fileID: 11400000, guid: 6c67dee75d22f9f4497294c004c5c90b, type: 2}
+  - text: {instanceID: 0}
+  - location: {instanceID: 0}
+  - EnemyGO: {instanceID: 0}
+  - respawn: {instanceID: 0}
+  - door: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

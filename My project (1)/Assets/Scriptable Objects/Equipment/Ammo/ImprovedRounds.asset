@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c185e9b96e913fd448d4e42ded8f011f, type: 3}
+  m_Name: ImprovedRounds
+  m_EditorClassIdentifier: 
+  id: ImprovedRounds
+  displayName: Improved Rounds
+  icon: {fileID: 21300000, guid: ff88b2b7b04ad3a4d85ae8a86b95fafd, type: 3}
+  prefab: {fileID: 9068973985299091061, guid: 681a32f23ea216e45bd91f13a8c5a254, type: 3}
+  equipSlot: 5
+  armorAdditiveModifier: 0
+  armorMultModifier: 0
+  damageAdditiveModifier: 1
+  damageMultModifier: 0
+  healthAdditiveModifier: 0
+  healthMultModifier: 0
+  buildsPrefab: {fileID: 0}
+  buildOffset: 0
+  buildTimerAdditiveModifier: 0
+  buildTimerMultModifier: 0
+  buildCoolDownAdditiveModifier: 0
+  buildCoolDownMultModifier: 0
+  rateOfFireAdditiveModifier: 0
+  rateOfFireMultModifier: 0
+  bulletVelocityAdditiveModifier: 0
+  bulletVelocityMultModifier: 0
+  clipSizeAdditiveModifier: 0
+  clipSizeMultModifier: 0
+  reloadTimeAdditiveModifier: 0
+  reloadTimeMultModifier: 0
+  meleeDamageAdditiveModifier: 0
+  meleeDamageMultModifier: 0
+  itemAmount: 1
