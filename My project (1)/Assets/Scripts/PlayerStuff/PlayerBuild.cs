@@ -7,9 +7,11 @@ using UnityEngine;
 public class PlayerBuild : MonoBehaviour
 {
     GameObject builds;
-    GameObject currentBuilds;
+    GameObject currentBuilds;//stores gameobject of the builds that are equipped.
+
     GameObject player;
     Rigidbody2D playerRB;
+
     Equipment buildData;
     EquipmentManager equipManager;
 
@@ -17,66 +19,78 @@ public class PlayerBuild : MonoBehaviour
 
     PlayerStats myStats;
 
-    bool direction;
+    bool direction; //direction the player is facing
 
-    float buildOffset;
-    int buildTimer;
+    float buildOffsetX;  //X-axis offset of this particular build.
+                         //*** may need an offset for the Y axis as well.***
+    int buildTimer; //length of time before the player can build again.
+
+
     bool isRunning = false;
 
     private void Start()
     {
-        player = PlayerManager.instance.player;
-        playerRB = player.GetComponent<Rigidbody2D>();
+        player = PlayerManager.instance.player;         //find the player
+        playerRB = player.GetComponent<Rigidbody2D>();  //get the players Rigid Body.
 
-        equipManager = EquipmentManager.instance;
+        equipManager = EquipmentManager.instance;       //get current equipment.
 
-        playerController = player.GetComponent<Player_Movement>();
+        playerController = player.GetComponent<Player_Movement>();  //get the player controller to find the players current direction. 
 
-        myStats = GetComponent<PlayerStats>();
+        myStats = GetComponent<PlayerStats>();      //get player stats. 
 
     }
 
     public void Update()
     {
-        if (equipManager.GetBuilds() != null && buildData != equipManager.GetBuilds())
+        if (equipManager.GetBuilds() != null && buildData != equipManager.GetBuilds())      //if the equipment manager has build data and the player recently equipped a new build type.
         {
-            buildData = equipManager.GetBuilds();
+            buildData = equipManager.GetBuilds();       //replace the stored build data/prefab/timer used
             builds = buildData.buildsPrefab;
-            buildTimer = myStats.buildTimer.GetValue();
+            buildTimer = myStats.buildTimer.GetValue(); //this is how long the object is instantiated for.
         }
 
 
-        if (playerController != null)
+        if (playerController != null)   //get the direction of the player (to determine which side to instantiate the object on.
         {
             direction = playerController.playerDirection;
         }
 
 
-        if (direction && buildData != null)
+        if (direction && buildData != null)     //if current direction is true and build data exists. 
         {
-            buildOffset = buildData.buildOffset;
+            buildOffsetX = buildData.buildOffset;
         }
-        else if (buildData != null)
+        else if (buildData != null)             //if current direction is false and build data exists.
         {
-            buildOffset = -buildData.buildOffset;
+            buildOffsetX = -buildData.buildOffset;
         }
 
-        if (!isRunning && Input.GetKeyDown(KeyCode.F) && builds != null)
+        if (!isRunning && Input.GetKeyDown(KeyCode.F) && builds != null)    //if the coroutine is not currently running and the player presses the build key, as well as having prefab stored in builds
         {
             StartCoroutine(Build());
         }
 
-        Destroy(currentBuilds, ((float)buildTimer/100));
+        Destroy(currentBuilds, ((float)buildTimer/100));    //destroy the instantiated object (while keeping "build" data safe)  after a certain amount of time
+                                                            //using x/100 to allow for decimal times. 
+
+                                                            //*********Might need to rework this for better results***********
 
     }
 
     IEnumerator Build()
     {
-        isRunning = true;
-        Debug.Log(currentBuilds);
-        currentBuilds = Instantiate(builds, new Vector3(playerRB.transform.position.x + buildOffset, playerRB.transform.position.y - 1.5f, 0f), Quaternion.identity);
-        Debug.Log("Build Cooldown... " + myStats.buildCoolDown.GetValue() + " second cooldown");
-        yield return new WaitForSeconds((float)myStats.buildCoolDown.GetValue()/100);
-        isRunning = false;
+        isRunning = true;   //flag to prevent the coroutine from executing twice. 
+
+        currentBuilds = Instantiate(builds, new Vector3(playerRB.transform.position.x + buildOffsetX, playerRB.transform.position.y - 1.5f, 0f), Quaternion.identity);
+        //Spawns the build prefab in a new variable "currentBuilds" which is the active in game object. We spawn it based on the location of the player, adding in extra offsets depepnding on the type of build it is.
+        //Some builds may need to go above, below, or behind the player.
+        //******May need to offset the Y axis as well at some point.*********
+
+        Debug.Log("Build Cooldown... " + myStats.buildCoolDown.GetValue() + " second cooldown");//used for testing purposes
+
+        yield return new WaitForSeconds((float)myStats.buildCoolDown.GetValue()/100); //prevents the coroutine from being called again before the object has been destroyed.
+                                                                                      //this time is determined by the build cooldown variable
+        isRunning = false;  //flip the flag to allow the coroutine to run again.
     }
 }

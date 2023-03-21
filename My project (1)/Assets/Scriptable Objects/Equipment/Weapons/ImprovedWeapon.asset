@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: ImprovedWeapon
   displayName: Improved Weapon
-  icon: {fileID: 21300000, guid: 34d3ede16b6c70d4b9ff79fb5b282630, type: 3}
-  prefab: {fileID: 2093307610780312439, guid: 560118d2dd32a1147bfecff6add1b1b4, type: 3}
+  icon: {fileID: 21300000, guid: a6971ee588523684494ffad8da7b3ad1, type: 3}
+  prefab: {fileID: 3827850581498197693, guid: db4d08198a8584a48a89f0c9fb9428c3, type: 3}
   equipSlot: 1
   armorAdditiveModifier: 0
   armorMultModifier: 0
-  damageAdditiveModifier: 0
+  damageAdditiveModifier: 1
   damageMultModifier: 0
   healthAdditiveModifier: 0
   healthMultModifier: 0
