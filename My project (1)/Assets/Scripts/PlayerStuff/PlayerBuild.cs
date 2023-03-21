@@ -73,6 +73,7 @@ public class PlayerBuild : MonoBehaviour
     IEnumerator Build()
     {
         isRunning = true;
+        Debug.Log(currentBuilds);
         currentBuilds = Instantiate(builds, new Vector3(playerRB.transform.position.x + buildOffset, playerRB.transform.position.y - 1.5f, 0f), Quaternion.identity);
         Debug.Log("Build Cooldown... " + myStats.buildCoolDown.GetValue() + " second cooldown");
         yield return new WaitForSeconds((float)myStats.buildCoolDown.GetValue()/100);
