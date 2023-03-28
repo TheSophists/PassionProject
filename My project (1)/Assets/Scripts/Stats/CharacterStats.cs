@@ -40,7 +40,7 @@ public class CharacterStats : MonoBehaviour
 
     public virtual void Die()
     {
-        //This method is intended to be overwritten (by enemies and players who have differing death mechanics
+        //This method is intended to be overwritten (by enemies and players who have differing death mechanics)
 
     }
 

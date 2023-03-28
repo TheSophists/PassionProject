@@ -4,8 +4,8 @@ using UnityEngine.Events;
 public class CharacterController2D : MonoBehaviour
 {
     [SerializeField] private float m_JumpForce = 300f;                          // Amount of force added when the player jumps.
-    [Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;          // Amount of maxSpeed applied to crouching movement. 1 = 100%
-    [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;  // How much to smooth out the movement
+    [Range(0, 1)][SerializeField] private float m_CrouchSpeed = .36f;          // Amount of maxSpeed applied to crouching movement. 1 = 100%
+    [Range(0, .3f)][SerializeField] private float m_MovementSmoothing = .05f;  // How much to smooth out the movement
     [SerializeField] private bool m_AirControl = false;                         // Whether or not a player can steer while jumping;
     [SerializeField] private LayerMask m_WhatIsGround;                          // A mask determining what is ground to the character
     [SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
@@ -23,7 +23,7 @@ public class CharacterController2D : MonoBehaviour
     [Header("Events")]
     [Space]
 
-    public UnityEvent OnLandEvent;
+    public UnityEvent OnLandEvent;      //an event that is trigger when the player lands back on the ground.
 
     [System.Serializable]
     public class BoolEvent : UnityEvent<bool> { }
@@ -33,9 +33,12 @@ public class CharacterController2D : MonoBehaviour
 
     private void Awake()
     {
+
+        //OnLandEvent.AddListener(Testing); //listener being kept as an example on how to use listeners/delegates.
+
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
 
-        if (OnLandEvent == null)
+        if (OnLandEvent == null)            //sets the event types as theyre null on start.
             OnLandEvent = new UnityEvent();
 
         if (OnCrouchEvent == null)
@@ -50,13 +53,16 @@ public class CharacterController2D : MonoBehaviour
         // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
         // This can be done using layers instead but Sample Assets will not overwrite your project settings.
         Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
+
         for (int i = 0; i < colliders.Length; i++)
         {
-            if (colliders[i].gameObject != gameObject)
+            if (colliders[i].gameObject != gameObject)      //checks all colliders and ignores collisions with the player object. It only checks for "ground" objects.
             {
-                m_Grounded = true;
+                m_Grounded = true;      //we know the player has hit an object other than itself, so make it grounded.
                 if (!wasGrounded)
-                    OnLandEvent.Invoke();
+                {
+                    OnLandEvent.Invoke();   //if the player was not grounded before, then trigger a land event. 
+                }
             }
         }
     }
@@ -128,7 +134,6 @@ public class CharacterController2D : MonoBehaviour
         if (m_Grounded && jump)
         {
             // Add a vertical force to the player.
-            m_Grounded = false;
             m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0);
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
         }
@@ -146,4 +151,10 @@ public class CharacterController2D : MonoBehaviour
         weaponPart.transform.localScale = theScale;
         transform.localScale = theScale;
     }
+
+    /*public void Testing()
+    {
+        Debug.Log("OnLandEvent Triggered Here and Stuff for visibility.");
+    }*/ 
+    //this is being left in as an example of how i would use a listener for an OnLandEvent.
 }
