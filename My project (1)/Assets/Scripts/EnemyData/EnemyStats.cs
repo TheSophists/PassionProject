@@ -56,7 +56,7 @@ public class EnemyStats : CharacterStats
         
     }
 
-    public override void TakeDamage(int damage)
+    public override void TakeDamage(int damage) //Overrides the TakeDamage in CharacterStats
     {
         base.TakeDamage(damage);            //call the character Stats class's take damage.
         if(charStats.currentHealth > 0)     //if the enemy has health still

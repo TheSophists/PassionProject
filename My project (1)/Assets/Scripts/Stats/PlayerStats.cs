@@ -20,16 +20,16 @@ public class PlayerStats : CharacterStats
     // Start is called before the first frame update
     void Start()
     {
-        EquipmentManager.instance.onEquipmentChanged += onEquipmentChanged;
-        charStats = GetComponent<CharacterStats>();
-        string healthVal = charStats.currentHealth.ToString();
-        text.text = healthVal;
+        EquipmentManager.instance.onEquipmentChanged += onEquipmentChanged;     //adds an event for changing equipment
+        charStats = GetComponent<CharacterStats>();                             
+        string healthVal = charStats.currentHealth.ToString();                  //store the players health value in a string
+        text.text = healthVal;                                                  //text box that displays player health string
     }
 
     void onEquipmentChanged(Equipment newItem, Equipment oldItem)
     {
         
-        if (newItem != null)
+        if (newItem != null)        //if the player is equipping a new item
         {
             baseHealth.AddAdditiveModifier(newItem.healthAdditiveModifier);
             baseHealth.AddMultModifier(newItem.healthMultModifier);
@@ -62,7 +62,7 @@ public class PlayerStats : CharacterStats
             meleeDamage.AddMultModifier(newItem.meleeDamageMultModifier);
         }
 
-        if (oldItem != null)
+        if (oldItem != null)                //if the player is removing equipment
         {
             baseHealth.RemoveAdditiveModifier(oldItem.healthAdditiveModifier);
             baseHealth.RemoveMultModifier(oldItem.healthMultModifier);
@@ -94,57 +94,47 @@ public class PlayerStats : CharacterStats
             meleeDamage.RemoveAdditiveModifier(oldItem.meleeDamageMultModifier);
             meleeDamage.RemoveMultModifier(oldItem.meleeDamageMultModifier);
         }
-
-
-        if (currentHealth > baseHealth.GetValue())
-        {
-            ResetHealth();
-            string dialog = charStats.currentHealth.ToString();
-            text.text = dialog;
-        }
     }
 
-    public override void Die()
+    public override void Die()      //this is incomplete, it handles what happens to the player after death.
     {
         base.Die();
         //kill the player
+        //*********this will probably need to reset any dungeon instances, depending on how i reload the scene whenthe player dies******
         PlayerManager.instance.KillPlayer();
     }
 
-    public void Update()
+    public override void TakeDamage(int damage)     //overriding the takeDamage function of CharacterStats in order to add invulnerability to the player.
     {
-        if (Input.GetKeyDown(KeyCode.L))
+        Debug.Log("Invuln: " + invulnerability);
+        if (invulnerability == false)                           //if the player is not invulnerable
         {
-            TakeDamage(50);
+            base.TakeDamage(damage);                            //call the base of TakeDamage, which handles health changes and damage dealt
+            invulnerability = true;                             //as players have taken damage, theey are now invulnerable
+            StartCoroutine(Invulnerability());                  //start the invul coroutine
         }
+
+        DisplayHealth();
     }
 
-    public override void TakeDamage(int damage)
+
+    public IEnumerator Invulnerability()
     {
-        if (invulnerability == false)
-        {
-            StartCoroutine(Invulnerability(damage));
-            
-        }
-        string dialog = charStats.currentHealth.ToString();
-        text.text = dialog;
-    }
-
-
-    public IEnumerator Invulnerability(int damage)
-    {
-        base.TakeDamage(damage);
-        invulnerability = true;
-        yield return new WaitForSeconds(1);
-        invulnerability = false;
+        yield return new WaitForSeconds(1);     //delay removing the invuln
+        invulnerability = false;                //reset invuln
     }
 
 
 
-    public override void Heal(int heal)
+    public override void Heal(int heal)         //overrides CharacterStats Heal() in order to update the 
     {
         base.Heal(heal);
-        string dialog = charStats.currentHealth.ToString();
-        text.text = dialog;
+        DisplayHealth();
+    }
+
+    public void DisplayHealth()                                 //displays the players health in the appropriate box
+    {
+        string dialog = charStats.currentHealth.ToString();     //store the health stat in a string
+        text.text = dialog;                                     //update the text box's text
     }
 }

@@ -65,7 +65,7 @@ public class EnemyAttack : MonoBehaviour
             StartCoroutine(EnemyFreeze());
 
 
-            playerStats.TakeDamage(enemyStats.damage.GetValue());
+            playerStats.TakeDamage(enemyStats.damage.GetValue());   //this line should be rewritten to use the Character Combat script.
         }
     }
 

@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class CloseDoor : MonoBehaviour
 {
-    public GameObject door;
-    public GameObject enemies;
+    public GameObject door;     //the door object that will be closed
+    public GameObject enemies;  //the enemies that are in the room the player just entered. (enemies spawn after the player walks through the door location that is about to be closed.
+
     private void OnTriggerExit2D(Collider2D collision)
     {
-
-        door.SetActive(true);
-        if (enemies != null)
+        if (collision.tag == "Player")  //if the player walks through the door.
         {
-            enemies.SetActive(true);
+            door.SetActive(true);   //close the door behind the player.
+            if (enemies != null)    //if the room has enemies associated with it
+            {
+                enemies.SetActive(true);    //spawn them after the player enters the room and the door shuts behind.
+            }
         }
 
     }

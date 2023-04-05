@@ -13,7 +13,6 @@ public class HealthPotion : InventoryItemData
     {
         playerManager = PlayerManager.instance;
         playerStats = playerManager.player.GetComponent<PlayerStats>();
-        Debug.Log(playerStats.baseHealth.GetValue());
 
     }
     public override void Use()
