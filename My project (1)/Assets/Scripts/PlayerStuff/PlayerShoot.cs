@@ -8,6 +8,7 @@ public class PlayerShoot : MonoBehaviour, IPooledObject
     public GameObject player;
     public Camera playerCam;
     PlayerStats myStats;
+    PlayerManager playerManager;
 
     Transform weaponPart;   //location of weapon
     Transform firePoint;    //location of the point that projectiles are instantiated at.
@@ -36,9 +37,10 @@ public class PlayerShoot : MonoBehaviour, IPooledObject
         //get singletons of equipment, bullet pooler
         equipManager = EquipmentManager.instance;
         objectPooler = ObjectPooler.Instance;
+        playerManager = PlayerManager.instance;
 
         //get current stats
-        myStats = player.GetComponent<PlayerStats>();
+        myStats = playerManager.player.GetComponent<PlayerStats>();
 
         //if there is not a firepoint attached to the player.
         if (firePoint == null)
@@ -65,16 +67,16 @@ public class PlayerShoot : MonoBehaviour, IPooledObject
 
         //this also moves the weapon part to match the direction that the player is firing.
         weaponPart.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        //if there is no ranged data OR if the ranged data doesnt match the previous frame, we update the data being used for firing (Equipment change check)
+
+        //if there is no ranged data OR if the ranged data doesnt match the previous frame,
+        //we update the data being used for firing (Equipment change check)
         if (equipManager.GetRanged() != null && rangedData != equipManager.GetRanged())
         {
             rangedData = equipManager.GetRanged();
             rateOfFire = myStats.rateOfFire.GetValue();
             bulletVel = myStats.bulletVelocity.GetValue();
             reloadTime = myStats.reloadTime.GetValue();
-            clipSize = myStats.clipSize.GetValue(); ;
-
-
+            clipSize = myStats.clipSize.GetValue();
             ammoAmount = clipSize;
             equipFlag = false;
         }
@@ -125,7 +127,7 @@ public class PlayerShoot : MonoBehaviour, IPooledObject
         {
             ammoAmount--;
         }
-        yield return new WaitForSeconds((float)rateOfFire / 100);   //this sets the rate of fire delay
+        yield return new WaitForSeconds((float)100 / rateOfFire);   //this sets the rate of fire delay
 
         isShooting = false; //reset the flag
     }

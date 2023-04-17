@@ -29,7 +29,7 @@ MonoBehaviour:
   buildTimerMultModifier: 0
   buildCoolDownAdditiveModifier: 0
   buildCoolDownMultModifier: 0
-  rateOfFireAdditiveModifier: 100
+  rateOfFireAdditiveModifier: 800
   rateOfFireMultModifier: 0
   bulletVelocityAdditiveModifier: 40
   bulletVelocityMultModifier: 0

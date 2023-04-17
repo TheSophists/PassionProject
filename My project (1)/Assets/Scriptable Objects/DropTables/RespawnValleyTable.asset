@@ -16,5 +16,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a704b3d511f893a459ba5012ee129bbc, type: 2}
   - {fileID: 11400000, guid: 068e671a15710304d9b900d126ddbc24, type: 2}
   - {fileID: 11400000, guid: e2d5ae74ccd04004a836ceadbe64c767, type: 2}
-  maxAmount: 2
+  maxAmount: 5
   somethingRate: 75

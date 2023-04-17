@@ -7,19 +7,20 @@ public class HealthPotion : InventoryItemData
 {
     PlayerManager playerManager;
     PlayerStats playerStats;
-    public int heal;
+    public int heal;            //the amount that this potion will heal
 
-    void GetData()
+    void GetData()      //get info about the player such as current health (STATS).
     {
-        playerManager = PlayerManager.instance;
-        playerStats = playerManager.player.GetComponent<PlayerStats>();
+        playerManager = PlayerManager.instance;     //get the instance of the player
+        playerStats = playerManager.player.GetComponent<PlayerStats>();     //get the player stats component
 
     }
     public override void Use()
     {
-        base.Use();
-        GetData();
-        playerStats.Heal(heal);
-        RemoveFromInventory();
+        base.Use();     //execute the base class for Use()
+        GetData();      //get the player's data
+
+        playerStats.Heal(heal);     //heal the player, based on how much this item heals for.
+        RemoveFromInventory();      //remove it from the inventory, as it has been consumed.
     }
 }

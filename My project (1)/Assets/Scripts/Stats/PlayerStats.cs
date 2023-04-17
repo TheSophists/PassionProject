@@ -20,15 +20,15 @@ public class PlayerStats : CharacterStats
     // Start is called before the first frame update
     void Start()
     {
-        EquipmentManager.instance.onEquipmentChanged += onEquipmentChanged;     //adds an event for changing equipment
-        charStats = GetComponent<CharacterStats>();                             
+        EquipmentManager.instance.onEquipmentChanged += onEquipmentChanged;     //adds an event ?listener? for changing equipment
+        charStats = GetComponent<CharacterStats>();
         string healthVal = charStats.currentHealth.ToString();                  //store the players health value in a string
         text.text = healthVal;                                                  //text box that displays player health string
     }
 
-    void onEquipmentChanged(Equipment newItem, Equipment oldItem)
+    void onEquipmentChanged(Equipment newItem, Equipment oldItem)       //when the equipment changed event is invoked. (commonly called from Equipment Manager)
     {
-        
+
         if (newItem != null)        //if the player is equipping a new item
         {
             baseHealth.AddAdditiveModifier(newItem.healthAdditiveModifier);
