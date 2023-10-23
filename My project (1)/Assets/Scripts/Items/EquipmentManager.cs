@@ -15,7 +15,7 @@ public class EquipmentManager : MonoBehaviour
 
     private void Awake()
     {
-        {
+        if(instance ==  null){
             instance = this;            //singleton that manages the equipment that is currently equipped
         }
     }

@@ -14,10 +14,26 @@ public class Player_Movement : MonoBehaviour
     bool jump = false;
     bool crouch = false;
 
+    PlayerManager playerManager;
+    PlayerStats playerStats;
+    Rigidbody2D playerRb;
+
+    public void Start()
+    {
+        playerManager = PlayerManager.instance;
+        playerRb = playerManager.player.GetComponent<Rigidbody2D>();
+        playerStats = playerManager.player.GetComponent<PlayerStats>();
+    }
+
 
     //most of the values set here are used to control the if statements in the character controller2D script. When the boolean values are flipped here based on
     //player input, certain if loops (that handle jumping for example) will start once the keys are presssed in this script.
     void Update()
+    {
+        Move();
+    }
+
+    public void Move()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed; //get the input from the arrow keys and multiply by the runspeed.
 

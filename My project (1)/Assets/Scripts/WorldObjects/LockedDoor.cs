@@ -15,7 +15,7 @@ public class LockedDoor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")      //if a player enters the trigger of a locked door
+        if (collision.CompareTag("Player"))      //if a player enters the trigger of a locked door
         {
             playerInside = true;            //then playerInside becomes true (crazy, right?)
         }
@@ -23,7 +23,7 @@ public class LockedDoor : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Player")      //if the player exits the trigger associated with the door
+        if (collision.CompareTag("Player"))       //if the player exits the trigger associated with the door
         {
             playerInside = false;           //then the player is no longer inside. (absolutely incredible)
         }

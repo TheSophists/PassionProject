@@ -10,7 +10,7 @@ public class EnemyStats : CharacterStats
     Text text;
     public Transform location;
     public bool respawns;
-    public GameObject EnemyGO;
+    public GameObject enemyGO;
     GameObject disabledEnemy;
     public EnemyRespawn respawn;
     public DropItem dropItem;
@@ -27,17 +27,19 @@ public class EnemyStats : CharacterStats
 
         if (respawns == false)      //is the enemy supposed to respawn?
         {
-            EnemyGO = null;     //if no, we dont need a gameobject.
+            enemyGO = null;     //if no, we dont need a gameobject.
         }
         else
         {
-            disabledEnemy = Instantiate(EnemyGO, new Vector2(location.position.x, location.position.y), Quaternion.identity, location);     //create an enemy at the spawn location.
+            disabledEnemy = Instantiate(enemyGO, new Vector2(location.position.x, location.position.y), Quaternion.identity, location);     //create an enemy at the spawn location.
             disabledEnemy.SetActive(false);                                                                                                 //then disable the enemy until the active one dies. (EnemyRespawn)
         }
+
     }
 
     public override void Die()          //overriding characterStats Die()
     {
+        base.Die();
         if (respawns == true)
         {
             respawn.Respawn(disabledEnemy, respawnTimer);       //call Respawn in the EnemyRespawn class

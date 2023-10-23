@@ -84,7 +84,7 @@ public class EnemyAttack : MonoBehaviour
 
     public IEnumerator Shoot()  //called from EnemyAI
     {
-        isRunning = true;       //prevents shooting before their rof allows
+        isRunning = true;       //prevents shooting before their ROF allows
 
         Vector2 playerPosition = new Vector2(player.transform.position.x, player.transform.position.y);
         Vector2 weaponPosition = new Vector2(firePoint.position.x, firePoint.position.y);

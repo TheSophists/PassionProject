@@ -18,6 +18,7 @@ public class InventoryUI : MonoBehaviour
     void Start()
     {
         inventory = Inventory.instance;     //get the instance of the inventory
+
         inventory.onItemChangedCallback += UpdateUI;    //add an event for updating the UI with a new inventory item
 
         UI.transform.GetChild(0).gameObject.SetActive(false);   //keep the inventory UI turned off at the start.

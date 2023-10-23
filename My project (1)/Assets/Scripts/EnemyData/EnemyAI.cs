@@ -37,6 +37,7 @@ public class EnemyAI : MonoBehaviour
     PlayerManager playerManager;
     GameObject player;
     EnemyAttack enemyAttack;
+    EnemyStats enemyStats;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +47,8 @@ public class EnemyAI : MonoBehaviour
         target = player.transform;
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        enemyStats = rb.GetComponent<EnemyStats>();
+
 
         speed = enemyData.speed;
         attackDistance = enemyData.attackDistance;
@@ -90,51 +93,7 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        enemyDirection = (new Vector2(player.transform.position.x, player.transform.position.y) - new Vector2(enemyGFX.position.x, enemyGFX.position.y)).normalized;
-        currentDistanceX = Mathf.Abs(target.position.x - enemyGFX.position.x);
-        currentDistanceY = Mathf.Abs(target.position.y - enemyGFX.position.y);
-
-        if (enemyDirection.x > 0 && !m_FacingRight)
-        {
-            Flip();
-        }
-        else if (enemyDirection.x < 0 && m_FacingRight)
-        {
-            Flip();
-        }
-
-        if (currentDistanceX <= activateDistance && currentDistanceY <= activateDistance)
-        {
-            start = true;
-        }
-
-
-        //this block is used to make the enemy shoot
-        if (currentDistanceX <= attackDistance && currentDistanceY <= attackDistance && shoots == true && enemyAttack.isRunning == false)
-        {
-            rb.constraints = RigidbodyConstraints2D.FreezePosition;
-            enemyAttack.StartCoroutine("Shoot");
-
-            rb.constraints = RigidbodyConstraints2D.None;
-            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        }
-        else if (currentDistanceX <= attackDistance && currentDistanceY <= attackDistance && shoots == true && enemyAttack.isRunning == true)
-        {
-            movementFlag = false;
-        }
-
-
-        if (start && !flying && movementFlag)
-        {
-            GroundedMovement(enemyDirection, rb);
-        }
-        //AI movement, assuming the enemy flies, as grounded enemies will have a different movement system.
-        else if (start && flying)
-        {
-            FlyingMovement();
-        }
-
-        movementFlag = true;
+        Move();
     }
 
     public void FlyingMovement()
@@ -230,5 +189,54 @@ public class EnemyAI : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    public void Move()
+    {
+        enemyDirection = (new Vector2(player.transform.position.x, player.transform.position.y) - new Vector2(enemyGFX.position.x, enemyGFX.position.y)).normalized;
+        currentDistanceX = Mathf.Abs(target.position.x - enemyGFX.position.x);
+        currentDistanceY = Mathf.Abs(target.position.y - enemyGFX.position.y);
+
+        if (enemyDirection.x > 0 && !m_FacingRight)
+        {
+            Flip();
+        }
+        else if (enemyDirection.x < 0 && m_FacingRight)
+        {
+            Flip();
+        }
+
+        if (currentDistanceX <= activateDistance && currentDistanceY <= activateDistance)
+        {
+            start = true;
+        }
+
+
+        //this block is used to make the enemy shoot
+        if (currentDistanceX <= attackDistance && currentDistanceY <= attackDistance && shoots == true && enemyAttack.isRunning == false)
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezePosition;
+            enemyAttack.StartCoroutine("Shoot");
+
+            rb.constraints = RigidbodyConstraints2D.None;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+        else if (currentDistanceX <= attackDistance && currentDistanceY <= attackDistance && shoots == true && enemyAttack.isRunning == true)
+        {
+            movementFlag = false;
+        }
+
+
+        if (start && !flying && movementFlag)
+        {
+            GroundedMovement(enemyDirection, rb);
+        }
+        //AI movement, assuming the enemy flies, as grounded enemies will have a different movement system.
+        else if (start && flying)
+        {
+            FlyingMovement();
+        }
+
+        movementFlag = true;
     }
 }

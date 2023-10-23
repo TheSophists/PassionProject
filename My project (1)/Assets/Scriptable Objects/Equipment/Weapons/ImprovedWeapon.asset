@@ -29,7 +29,7 @@ MonoBehaviour:
   buildTimerMultModifier: 0
   buildCoolDownAdditiveModifier: 0
   buildCoolDownMultModifier: 0
-  rateOfFireAdditiveModifier: 800
+  rateOfFireAdditiveModifier: 400
   rateOfFireMultModifier: 0
   bulletVelocityAdditiveModifier: 40
   bulletVelocityMultModifier: 0
@@ -39,4 +39,6 @@ MonoBehaviour:
   reloadTimeMultModifier: 0
   meleeDamageAdditiveModifier: 0
   meleeDamageMultModifier: 0
+  initiativeAdditiveModifier: 5
+  initiativeMultModifier: 0
   itemAmount: 1

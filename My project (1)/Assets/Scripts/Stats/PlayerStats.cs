@@ -106,7 +106,6 @@ public class PlayerStats : CharacterStats
 
     public override void TakeDamage(int damage)     //overriding the takeDamage function of CharacterStats in order to add invulnerability to the player.
     {
-        Debug.Log("Invuln: " + invulnerability);
         if (invulnerability == false)                           //if the player is not invulnerable
         {
             base.TakeDamage(damage);                            //call the base of TakeDamage, which handles health changes and damage dealt

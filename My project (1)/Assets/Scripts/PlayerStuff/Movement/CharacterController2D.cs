@@ -137,6 +137,18 @@ public class CharacterController2D : MonoBehaviour
             m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0);
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
         }
+
+        if (move == 0 && m_Grounded == true && jump == false)
+        {
+            Vector2 currentVelocity = m_Rigidbody2D.velocity;
+            currentVelocity.x = 0;
+            m_Rigidbody2D.velocity = currentVelocity;
+            m_Rigidbody2D.gravityScale = 0;
+        }
+        else
+        {
+            m_Rigidbody2D.gravityScale = 4;
+        }
     }
 
 

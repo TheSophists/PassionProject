@@ -43,20 +43,23 @@ public class Projectile : MonoBehaviour
     //when a projectile hits any object
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        projectile.SetActive(false);    //disable the projectile.
-
-        if (objectPooler != null)
+        if (!collision.CompareTag("InvisibleObject"))   //do nothing if it hits an invisible object.
         {
-            objectPooler.poolDictionary["BulletPooler"].Enqueue(projectile);    //add the projectile back into the queue
-        }
+            projectile.SetActive(false);    //disable the projectile.
 
-        if (collision.gameObject.GetComponent<EnemyStats>() != null && flag == false)   //if the object the projectile collided with has an enemy stats component (AND the flag used to indicate being hit hasnt been flipped yet)
-        {
-            flag = true;        //flip the flag to prevent a single projectile from damaging the enemy in multiple frames.
+            if (objectPooler != null)
+            {
+                objectPooler.poolDictionary["BulletPooler"].Enqueue(projectile);    //add the projectile back into the queue
+            }
 
-            EnemyDamaged(collision.GetComponent<EnemyStats>(), playerStats.damage.GetValue());  //we hit an enemy, so next we deal with the health stat changes 
+            if (collision.gameObject.GetComponent<EnemyStats>() != null && flag == false)   //if the object the projectile collided with has an enemy stats component (AND the flag used to indicate being hit hasnt been flipped yet)
+            {
+                flag = true;        //flip the flag to prevent a single projectile from damaging the enemy in multiple frames.
+
+                EnemyDamaged(collision.GetComponent<EnemyStats>(), playerStats.damage.GetValue());  //we hit an enemy, so next we deal with the health stat changes 
+            }
+            flag = false;   //flip the flag back so that when it is re-queued it is still able to damage enemies.
         }
-        flag = false;   //flip the flag back so that when it is re-queued it is still able to damage enemies.
     }
 
     public void EnemyDamaged(CharacterStats takeDamage, int damage)

@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 1103205581381883500}
   - component: {fileID: 1103205581381883501}
   - component: {fileID: 372174296}
-  - component: {fileID: 6512975782214286374}
+  - component: {fileID: 129122292}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,6 +31,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 232.09047, y: 146.39253, z: -181.73732}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,7 +74,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c3cfa8a0e4fa04ab5c973c8138a965, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 5439947513421006174, guid: ec9d44fbf13073843b5a2484f29358f4, type: 3}
   player: {fileID: 0}
+  coinText: {fileID: 0}
+  coins: 0
 --- !u!114 &372174296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1f834c371804bc4580a1d03a23dd7f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6512975782214286374
+--- !u!114 &129122292
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,6 +99,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1103205581381883497}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 653df685082be6049825b244ad0d7a5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e0244234489d1740b75e05e07a5fb31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

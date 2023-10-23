@@ -45,6 +45,9 @@ public class Equipment : InventoryItemData
     public int meleeDamageAdditiveModifier;         //adds damage points to the melee attacks.
     public int meleeDamageMultModifier;
 
+    public int initiativeAdditiveModifier;          //adds points to initiative.
+    public int initiativeMultModifier;
+
 
     public int itemAmount;                          //the quantity of items in the stack
 

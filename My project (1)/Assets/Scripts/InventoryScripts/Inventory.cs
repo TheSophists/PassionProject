@@ -22,31 +22,32 @@ public class Inventory : MonoBehaviour
         {
             Debug.LogWarning("More than one instance of inventory found");  //we shouldnt have an inventory on Awake() yet, so give a warning
         }
-        instance = this;        //else, create the instance.
+        instance = this;       //else, create the instance.
+
     }
 
-    public InventoryItem Get(InventoryItemData referenceData)       //gets info about the item in our inventory
+    public InventoryItem Get(InventoryItemData referenceData)                       //gets info about the item in our inventory
     {
         if (m_itemDictionary.TryGetValue(referenceData, out InventoryItem value))   //check the dictionary for any value matching the reference data being sent.
         {                                                                           //if we have that data in the inventory, pull the Inventory Item associated with it out and store it in "value"
             return value;
         }
-        return null;    //if we dont have any data in the dictionary that matches our reference data, we dont have the item, so return null
+        return null;                                                                //if we dont have any data in the dictionary that matches our reference data, we dont have the item, so return null
     }
 
-    public bool Add(InventoryItemData item)             //add an item to the inventory, using its inventory item data values, called from "item pickup" script
+    public bool Add(InventoryItemData item)                                         //add an item to the inventory, using its inventory item data values, called from "item pickup" script
     {
 
         if (m_itemDictionary.TryGetValue(item, out InventoryItem value))        //if this item data already exists in our dictionary of items
         {
-            value.AddToStack();                 //simply add one to the stack size.
+            value.AddToStack();                                                 //simply add one to the stack size.
         }
-        else if (items.Count >= space)  //else if our inventory is already full
+        else if (items.Count >= space)                                          //else if our inventory is already full
         {
             Debug.Log("Not enough room");       //warn the player and return false, as we werent successful in adding the item
-            return false;   //this return statement avoids the item changed callback below, as this is the only option that doesnt need to update the UI
+            return false;                       //this return statement avoids the item changed callback below, as this is the only option that doesnt need to update the UI
         }
-        else                            //otherwise it is safe to add the item to the inventory.
+        else                                    //otherwise it is safe to add the item to the inventory.
         {
             InventoryItem newItem = new InventoryItem(item);    //create a new inventory item based on the reference data "item"
             items.Add(item);                                    //add the new "Inventory Item" to the inventory. (should be things like the icon displayed in the UI)
