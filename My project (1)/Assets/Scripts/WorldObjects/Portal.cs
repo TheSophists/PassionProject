@@ -15,12 +15,12 @@ public class Portal : MonoBehaviour
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         playerSpawner = spawnPlayer.GetComponent<SpawnPlayer>();
-        poolers = GameObject.FindGameObjectsWithTag("Pooler");
-        pooler = poolers[0].GetComponent<ObjectPooler>();
     }
 
     private void Start()
     {
+        poolers = GameObject.FindGameObjectsWithTag("Pooler");
+        pooler = poolers[0].GetComponent<ObjectPooler>();
         playerSpawner.SpawnsPlayer();
         pooler.Begin();
     }

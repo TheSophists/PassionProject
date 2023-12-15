@@ -26,6 +26,19 @@ public class CharacterStats : MonoBehaviour     //this class is a generic functi
             Die();
         }
     }
+    public void TakeDamageIgnoreArmor(int damage) { //same function as above, but this ignore the armor value
+
+        damage = Mathf.Clamp(damage, 0, int.MaxValue);      //keeps the damage value betweem 0 and int.MaxValue, this prevents negative damage from armor (which would heal)
+
+        currentHealth -= damage;                            //subtract the damage amount from 
+
+        Debug.Log(transform.name + " takes " + damage + " damage. It now has " + currentHealth + " health and " + armor.GetValue() + " armor");
+
+        if (currentHealth <= 0)     //if the character's health drops to or below 0, the character dies.
+        {
+            Die();
+        }
+    }
 
     public virtual void Heal(int heal)                          //this will typically be called when the player uses an inventory item to heal.
     {

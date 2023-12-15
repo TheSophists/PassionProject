@@ -13,6 +13,7 @@ public class InventorySlot : MonoBehaviour
     public Text stack;              //text box for stack size
 
     public GameObject player;
+    GameObject[] checkPlayer;
     public InventoryItem inventItem;
 
     InventoryItemData item;
@@ -49,11 +50,21 @@ public class InventorySlot : MonoBehaviour
         inventItem = Inventory.instance.Get(item);  //get the item in the instance of the inventory.
         if (player == null)                         //if we dont have the player's game object yet.
         {
-            player = GameObject.Find("Player");     //find it
+            checkPlayer = GameObject.FindGameObjectsWithTag("Player");     //find it
+            if (checkPlayer.Length == 0)
+            {
+                Debug.Log("no player found");
+            }
+            if(checkPlayer.Length == 1)
+            {
+                player = checkPlayer[0];
+            }
         }
 
         //then spawn the gameobject just in front of the player.
         Vector3 offset = new Vector3(Random.Range(4f, 6f), 0, 0);
+
+        //Debug.Log(player.transform.position);
         Instantiate(item.prefab, (player.transform.position + offset), Quaternion.identity);
 
         //remove that item from the inventory. (not just the slot)

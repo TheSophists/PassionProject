@@ -10,10 +10,30 @@ public class SpawnPlayer : MonoBehaviour
     GameObject[] playerCheck;
     GameObject player;
     GameObject playerRB;
+    GameObject[] checkObjectPooler;
+    public GameObject objectPoolerPrefab;
+    GameObject objectPoolerGO;
+    ObjectPooler objectPooler;
 
     private void Awake()
     {
         SpawnGameManager();
+        SpawnObjectPooler();
+    }
+
+    public void SpawnObjectPooler()
+    {
+        checkObjectPooler = GameObject.FindGameObjectsWithTag("Pooler");
+
+        if (checkObjectPooler.Length > 1)
+        {
+            Debug.Log("More than one object pooler found");
+        }
+        if(checkObjectPooler.Length == 0)
+        {
+            objectPoolerGO = Instantiate(objectPoolerPrefab);
+            objectPooler = objectPoolerGO.GetComponent<ObjectPooler>();
+        }
     }
 
     public void SpawnGameManager()
