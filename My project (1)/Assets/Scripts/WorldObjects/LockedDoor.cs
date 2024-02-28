@@ -31,12 +31,19 @@ public class LockedDoor : MonoBehaviour
 
     private void Update()
     {
-        if(playerInside == true && Input.GetButtonDown("Interact"))     //if the player is inside the locked door check, and they interact with the door
+        if (playerInside == true && Input.GetButtonDown("Interact"))     //if the player is inside the locked door check, and they interact with the door
         {
-            if (inventory.Get(key) != null)    //and if the inventory contains the item data associated with opening the door
+            if (key != null)
             {
-                inventory.Remove(key);              //remove the key from the inventory
-                this.gameObject.SetActive(false);   //disable the locked door object that this script is currently attached to.
+                if (inventory.Get(key) != null)    //and if the inventory contains the item data associated with opening the door
+                {
+                    inventory.Remove(key);              //remove the key from the inventory
+                    this.gameObject.SetActive(false);   //disable the locked door object that this script is currently attached to.
+                }
+            }
+            else
+            {
+                this.gameObject.SetActive(false);
             }
         }
     }
