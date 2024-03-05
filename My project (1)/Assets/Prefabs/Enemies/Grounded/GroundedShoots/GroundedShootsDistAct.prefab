@@ -26,6 +26,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2759219338071998138}
   m_RootOrder: 0
@@ -47,7 +48,7 @@ GameObject:
   - component: {fileID: 2759219338064031996}
   - component: {fileID: 1818357809203413816}
   m_Layer: 8
-  m_Name: GroundedShootsEnemy
+  m_Name: GroundedShootsDistAct
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,8 +62,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2759219338064031997}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -59.4, y: -6.8, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2759219337763842277}
   m_Father: {fileID: 0}
@@ -149,6 +151,7 @@ MonoBehaviour:
   speed: 200
   nextWaypointDistance: 1
   enemyGFX: {fileID: 2759219338071998138}
+  start: 0
   activateDistance: 38
 --- !u!114 &2759219338064031996
 MonoBehaviour:
@@ -168,14 +171,12 @@ MonoBehaviour:
     baseValue: 1
   armor:
     baseValue: 0
-  enemyData: {fileID: 11400000, guid: 5d3e3685a490fcb4cb93ff9193f28dd3, type: 2}
   location: {fileID: 0}
   respawns: 0
-  EnemyGO: {fileID: 0}
+  enemyGO: {fileID: 0}
   respawn: {fileID: 0}
   dropItem: {fileID: 1818357809203413816}
   respawnTimer: 0
-  playermanager: {fileID: 0}
 --- !u!114 &1818357809203413816
 MonoBehaviour:
   m_ObjectHideFlags: 0

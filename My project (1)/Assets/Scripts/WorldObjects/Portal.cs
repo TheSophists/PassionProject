@@ -7,9 +7,12 @@ public class Portal : MonoBehaviour
 {
     public string destinationScene;
     public GameObject spawnPlayer;
+    GameManager gameManager;
     SpawnPlayer playerSpawner;
     GameObject[] poolers;
     ObjectPooler pooler;
+
+    public int areaNumber;
 
     private void Awake()
     {
@@ -19,6 +22,7 @@ public class Portal : MonoBehaviour
 
     private void Start()
     {
+        gameManager = GameManager.instance;
         poolers = GameObject.FindGameObjectsWithTag("Pooler");
         pooler = poolers[0].GetComponent<ObjectPooler>();
         playerSpawner.SpawnsPlayer();
@@ -31,7 +35,11 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        LoadScene();
+        if(collision.tag == "Player")
+        {
+            gameManager.currentArea = areaNumber;
+            LoadScene();
+        }
     }
 
     private void LoadScene()

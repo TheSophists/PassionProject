@@ -24,4 +24,6 @@ public class EnemyData : ScriptableObject
 
     //length of time before the enemy can fire again.
     public int rateOfFire;
+
+    public bool distActivate;
 }

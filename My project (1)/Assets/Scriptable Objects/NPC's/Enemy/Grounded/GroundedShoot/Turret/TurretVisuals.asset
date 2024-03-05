@@ -9,14 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c526ac4377116aa448725b0581088249, type: 3}
-  m_Name: GroundedShootsData
+  m_Script: {fileID: 11500000, guid: ba6feafa7bf82104ab5b23b75518aa9f, type: 3}
+  m_Name: TurretVisuals
   m_EditorClassIdentifier: 
-  flies: 0
-  speed: 400
-  attackDistance: 30
-  shoots: 1
-  bulletVelocity: 25
-  damage: 3
-  recoilMovement: 0
-  rateOfFire: 3
+  visuals: {fileID: 767038132168882827, guid: a7469e12a3d046d4a82d1f6a47638b9c, type: 3}

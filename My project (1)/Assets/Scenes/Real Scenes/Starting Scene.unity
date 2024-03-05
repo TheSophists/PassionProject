@@ -42269,6 +42269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1103205581381883497, guid: 615ac7ef54750ce43889279d26483423, type: 3}
   objectPoolerPrefab: {fileID: 6130888247961990321, guid: 909e20ba1bd69164b9318c11650208cf, type: 3}
+  playerSpawnLocation: {fileID: 980779265}
 --- !u!4 &877489104
 Transform:
   m_ObjectHideFlags: 0
@@ -52960,6 +52961,10 @@ PrefabInstance:
     - target: {fileID: 8043323997742968413, guid: 7e548b0d940007a4cb1c39d6a777044e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8852663308264404303, guid: 7e548b0d940007a4cb1c39d6a777044e, type: 3}
+      propertyPath: areaNumber
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8852663308264404303, guid: 7e548b0d940007a4cb1c39d6a777044e, type: 3}
       propertyPath: gameManager

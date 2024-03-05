@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Real Scenes/PlayerDied.unity
     guid: da851f84caa469444a88058e75a044c3
   - enabled: 1
-    path: Assets/Scenes/Starting Scene.unity
+    path: Assets/Scenes/Real Scenes/Starting Scene.unity
     guid: 19e4c9573eab0214fb6e85e459e15569
   - enabled: 1
     path: Assets/Scenes/Real Scenes/Level1Area1.unity

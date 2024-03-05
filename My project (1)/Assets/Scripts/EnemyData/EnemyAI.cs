@@ -18,7 +18,7 @@ public class EnemyAI : MonoBehaviour
     Seeker seeker;
     Rigidbody2D rb;
 
-    bool start = false;
+    public bool start = false;
     public float activateDistance = 38f;
     float currentDistanceX;
     float currentDistanceY;
@@ -39,6 +39,8 @@ public class EnemyAI : MonoBehaviour
     EnemyAttack enemyAttack;
     EnemyStats enemyStats;
 
+    bool distActivate;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +56,7 @@ public class EnemyAI : MonoBehaviour
         attackDistance = enemyData.attackDistance;
         shoots = enemyData.shoots;
         flying = enemyData.flies;
+        distActivate= enemyData.distActivate;
 
         enemyAttack = GetComponent<EnemyAttack>();
 
@@ -206,14 +209,16 @@ public class EnemyAI : MonoBehaviour
             Flip();
         }
 
-        if (currentDistanceX <= activateDistance && currentDistanceY <= activateDistance)
+        if (distActivate == true)
         {
-            start = true;
+            if (currentDistanceX <= activateDistance && currentDistanceY <= activateDistance)
+            {
+                start = true;
+            }
         }
 
-
         //this block is used to make the enemy shoot
-        if (currentDistanceX <= attackDistance && currentDistanceY <= attackDistance && shoots == true && enemyAttack.isRunning == false)
+        if (currentDistanceX <= attackDistance && currentDistanceY <= attackDistance && shoots == true && enemyAttack.isRunning == false && start == true)
         {
             rb.constraints = RigidbodyConstraints2D.FreezePosition;
             enemyAttack.StartCoroutine("Shoot");
@@ -221,7 +226,7 @@ public class EnemyAI : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.None;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
-        else if (currentDistanceX <= attackDistance && currentDistanceY <= attackDistance && shoots == true && enemyAttack.isRunning == true)
+        else if (currentDistanceX <= attackDistance && currentDistanceY <= attackDistance && shoots == true && enemyAttack.isRunning == true && start == true)
         {
             movementFlag = false;
         }

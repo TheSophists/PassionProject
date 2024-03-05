@@ -102,3 +102,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e0244234489d1740b75e05e07a5fb31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dif1: {fileID: 11400000, guid: 192e6656e1344654a94bb4674942029d, type: 2}
+  dif2: {fileID: 11400000, guid: 081a5923d64df3e4d9709375389cc85b, type: 2}
+  dif3: {fileID: 11400000, guid: 9180e8863d5a2fb4cb341f3e730f6913, type: 2}
+  dif4: {fileID: 11400000, guid: 9223777d289a8d340bd00581e56971a4, type: 2}
+  dif5: {fileID: 11400000, guid: 807e636f9defd6e4396504735f40034e, type: 2}
+  area1Difficulty: 0
+  area2Difficulty: 0
+  area3Difficulty: 0
+  area4Difficulty: 0
+  area5Difficulty: 0
+  area6Difficulty: 0

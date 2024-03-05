@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5593972906629863224}
   - component: {fileID: 3637083367713665682}
   m_Layer: 0
-  m_Name: Melee Grounded
+  m_Name: Melee GroundedVisuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

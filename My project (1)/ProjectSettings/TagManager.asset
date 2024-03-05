@@ -18,6 +18,7 @@ TagManager:
   - GameManager
   - Pooler
   - Spikes
+  - SpawnLocations
   layers:
   - Default
   - TransparentFX

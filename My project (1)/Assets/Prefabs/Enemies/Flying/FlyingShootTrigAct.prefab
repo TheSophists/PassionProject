@@ -26,6 +26,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.5, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8601947789433603846}
   m_RootOrder: 0
@@ -48,7 +49,7 @@ GameObject:
   - component: {fileID: 990537378449946722}
   - component: {fileID: -2250393094992067376}
   m_Layer: 8
-  m_Name: FlyingShootEnemy
+  m_Name: FlyingShootTrigAct
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +64,8 @@ Transform:
   m_GameObject: {fileID: 8601947789433603844}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.25, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 864342907}
   m_Father: {fileID: 0}
@@ -133,7 +135,7 @@ MonoBehaviour:
   traversableTags: -1
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
-    value: -1
+    value: 2
 --- !u!114 &1465957462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +152,7 @@ MonoBehaviour:
   speed: 400
   nextWaypointDistance: 1
   enemyGFX: {fileID: 8601947789433603846}
+  start: 0
   activateDistance: 38
 --- !u!114 &1390234688
 MonoBehaviour:
@@ -197,14 +200,12 @@ MonoBehaviour:
     baseValue: 1
   armor:
     baseValue: 0
-  enemyData: {fileID: 11400000, guid: cb3009f59344f1844a3524d35803f803, type: 2}
   location: {fileID: 0}
   respawns: 0
-  EnemyGO: {fileID: 0}
+  enemyGO: {fileID: 0}
   respawn: {fileID: 0}
   dropItem: {fileID: -2250393094992067376}
   respawnTimer: 0
-  playermanager: {fileID: 0}
 --- !u!114 &-2250393094992067376
 MonoBehaviour:
   m_ObjectHideFlags: 0

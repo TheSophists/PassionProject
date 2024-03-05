@@ -6,7 +6,7 @@ public class SpawnPlayer : MonoBehaviour
 {
     public GameObject gameManager;
     GameObject[] gameManagerList;
-    GameObject[] playerSpawnLocation;
+    //GameObject[] playerSpawnLocation;
     GameObject[] playerCheck;
     GameObject player;
     GameObject playerRB;
@@ -14,6 +14,7 @@ public class SpawnPlayer : MonoBehaviour
     public GameObject objectPoolerPrefab;
     GameObject objectPoolerGO;
     ObjectPooler objectPooler;
+    public Transform playerSpawnLocation;
 
     private void Awake()
     {
@@ -29,7 +30,7 @@ public class SpawnPlayer : MonoBehaviour
         {
             Debug.Log("More than one object pooler found");
         }
-        if(checkObjectPooler.Length == 0)
+        if (checkObjectPooler.Length == 0)
         {
             objectPoolerGO = Instantiate(objectPoolerPrefab);
             objectPooler = objectPoolerGO.GetComponent<ObjectPooler>();
@@ -52,33 +53,29 @@ public class SpawnPlayer : MonoBehaviour
 
     public void SpawnsPlayer()
     {
-        playerSpawnLocation = GameObject.FindGameObjectsWithTag("SpawnLocation");
         playerCheck = GameObject.FindGameObjectsWithTag("Player");
 
 
-        if (playerSpawnLocation.Length > 1)
+        if (playerSpawnLocation == null)
         {
-            Debug.Log("more than one spawn found");
+            Debug.Log("no Spawn Location Found");
         }
 
-        if (playerSpawnLocation.Length == 1)
+        Vector2 spawnLocation = new Vector2(playerSpawnLocation.transform.position.x, playerSpawnLocation.transform.position.y);
+        if (playerCheck.Length == 0)
         {
-            Vector2 spawnLocation = new Vector2(playerSpawnLocation[0].transform.position.x, playerSpawnLocation[0].transform.position.y);
-            if (playerCheck.Length == 0)
-            {
-                playerRB = PlayerManager.instance.playerPrefab;
-                player = Instantiate(playerRB, spawnLocation, Quaternion.identity);
-                DontDestroyOnLoad(player);
-            }
-            else if (playerCheck.Length == 1)
-            {
-                player = playerCheck[0];
-                player.transform.position = new Vector2 (spawnLocation.x, spawnLocation.y);
-            }
-            else
-            {
-                Debug.Log("More than one player found");
-            }
+            playerRB = PlayerManager.instance.playerPrefab;
+            player = Instantiate(playerRB, spawnLocation, Quaternion.identity);
+            DontDestroyOnLoad(player);
+        }
+        else if (playerCheck.Length == 1)
+        {
+            player = playerCheck[0];
+            player.transform.position = new Vector2(spawnLocation.x, spawnLocation.y);
+        }
+        else
+        {
+            Debug.Log("More than one player found");
         }
     }
 }

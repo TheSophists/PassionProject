@@ -16,5 +16,6 @@ public class EnemyRespawn : MonoBehaviour
         yield return new WaitForSeconds(spawnTimer);        //wait before setting the disabled enemy active
         disabledEnemy.SetActive(true);                      //the disabled enemy is created and turned off as the current enemy is turned on, when an enemy dies, theyre destroyed
     }                                                       //and the disabled enemy that was created when the enemy was set active, is set active itself.
-                                                       //instantiate -> create enemy at spawn location -> disable enemy -> when original enemy dies, set this one active after a delay.
+                                                            //instantiate -> create enemy at spawn location -> disable enemy -> when original enemy dies, set this one active after a delay.
+
 }

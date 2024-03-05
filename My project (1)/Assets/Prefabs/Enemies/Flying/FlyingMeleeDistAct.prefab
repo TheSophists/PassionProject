@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 7010341284869106718}
   - component: {fileID: 2364324670609560975}
   m_Layer: 8
-  m_Name: FlyingMeleeEnemy
+  m_Name: FlyingMeleeDistAct
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,8 +33,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1838658891734706084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.918671, y: 8.684505, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7990647383297143771}
   m_Father: {fileID: 0}
@@ -105,6 +106,7 @@ MonoBehaviour:
   speed: 0
   nextWaypointDistance: 1
   enemyGFX: {fileID: 1838658891734706086}
+  start: 0
   activateDistance: 38
 --- !u!114 &7990647381698620640
 MonoBehaviour:
@@ -168,14 +170,12 @@ MonoBehaviour:
     baseValue: 1
   armor:
     baseValue: 0
-  enemyData: {fileID: 11400000, guid: cbf04a059803bc549a2c61d9761ff861, type: 2}
   location: {fileID: 0}
   respawns: 0
-  EnemyGO: {fileID: 1838658891734706084}
+  enemyGO: {fileID: 0}
   respawn: {fileID: 0}
   dropItem: {fileID: 2364324670609560975}
   respawnTimer: 0
-  playermanager: {fileID: 0}
 --- !u!114 &7010341284869106718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,6 +243,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.5, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1838658891734706086}
   m_RootOrder: 0
