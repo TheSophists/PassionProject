@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: ImprovedRounds
   displayName: Improved Rounds
-  icon: {fileID: 21300000, guid: ff88b2b7b04ad3a4d85ae8a86b95fafd, type: 3}
+  icon: {fileID: 21300000, guid: abe4197c21e63e74688eeb3b0786cbf7, type: 3}
   prefab: {fileID: 8013221410393053831, guid: d9b522f4a33737d46862879bd4fbb881, type: 3}
   equipSlot: 5
   armorAdditiveModifier: 0
@@ -39,4 +39,6 @@ MonoBehaviour:
   reloadTimeMultModifier: 0
   meleeDamageAdditiveModifier: 0
   meleeDamageMultModifier: 0
+  initiativeAdditiveModifier: 0
+  initiativeMultModifier: 0
   itemAmount: 1

@@ -15,7 +15,7 @@ public class PlayerBuild : MonoBehaviour
     Equipment buildData;
     EquipmentManager equipManager;
 
-    Player_Movement playerController;
+    CharacterController2D playerController;
 
     PlayerStats myStats;
 
@@ -35,7 +35,7 @@ public class PlayerBuild : MonoBehaviour
 
         equipManager = EquipmentManager.instance;       //get current equipment.
 
-        playerController = player.GetComponent<Player_Movement>();  //get the player controller to find the players current direction. 
+        playerController = player.GetComponent<CharacterController2D>();  //get the player controller to find the players current direction. 
 
         myStats = GetComponent<PlayerStats>();      //get player stats. 
 
@@ -53,7 +53,7 @@ public class PlayerBuild : MonoBehaviour
 
         if (playerController != null)   //get the direction of the player (to determine which side to instantiate the object on.
         {
-            direction = playerController.playerDirection;
+            direction = playerController.m_FacingRight;
         }
 
 
@@ -82,7 +82,8 @@ public class PlayerBuild : MonoBehaviour
     {
         isRunning = true;   //flag to prevent the coroutine from executing twice. 
 
-        currentBuilds = Instantiate(builds, new Vector3(playerRB.transform.position.x + buildOffsetX, playerRB.transform.position.y - 1.5f, 0f), Quaternion.identity);
+        Debug.Log(playerRB.transform.position.x + " " + playerRB.transform.position.y);
+        currentBuilds = Instantiate(builds, new Vector3(playerRB.transform.position.x + buildOffsetX, playerRB.transform.position.y, 0f), Quaternion.identity);
         //Spawns the build prefab in a new variable "currentBuilds" which is the active in game object. We spawn it based on the location of the player, adding in extra offsets depepnding on the type of build it is.
         //Some builds may need to go above, below, or behind the player.
         //******May need to offset the Y axis as well at some point.*********
