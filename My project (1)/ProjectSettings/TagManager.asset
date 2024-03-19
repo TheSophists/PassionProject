@@ -53,6 +53,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Behind Chest
+    uniqueID: 2257176247
+    locked: 0
+  - name: Chest
+    uniqueID: 2814473455
+    locked: 0
+  - name: Player
+    uniqueID: 4039524037
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

@@ -32,7 +32,7 @@ public class LoadVisuals : MonoBehaviour
 
         visuals = Instantiate(data.visuals);                //instantiate the "visuals" sprite. 
         visuals.transform.SetParent(this.transform);        //set the object this script is attached to as the parent object.
-        visuals.transform.localPosition = Vector2.zero;     //set the position of the visuals to be (0,0) compared to its parent. (so equal to its parent's position.
+        visuals.transform.localPosition = Vector3.zero;     //set the position of the visuals to be (0,0) compared to its parent. (so equal to its parent's position.
         visuals.transform.rotation = Quaternion.identity;   //set the rotation the same as the parent as well. 
     }
 

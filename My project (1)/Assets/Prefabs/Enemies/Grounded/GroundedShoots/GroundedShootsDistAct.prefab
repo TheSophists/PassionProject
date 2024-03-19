@@ -152,7 +152,8 @@ MonoBehaviour:
   nextWaypointDistance: 1
   enemyGFX: {fileID: 2759219338071998138}
   start: 0
-  activateDistance: 38
+  activateDistance: 10
+  animator: {fileID: 0}
 --- !u!114 &2759219338064031996
 MonoBehaviour:
   m_ObjectHideFlags: 0

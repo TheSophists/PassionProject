@@ -41,6 +41,9 @@ public class EnemyAI : MonoBehaviour
 
     bool distActivate;
 
+
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,7 +61,7 @@ public class EnemyAI : MonoBehaviour
         flying = enemyData.flies;
         distActivate= enemyData.distActivate;
 
-        enemyAttack = GetComponent<EnemyAttack>();
+        enemyAttack = this.GetComponent<EnemyAttack>();
 
         if (flying)
         {

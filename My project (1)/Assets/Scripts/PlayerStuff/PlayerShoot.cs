@@ -9,9 +9,10 @@ public class PlayerShoot : MonoBehaviour, IPooledObject
     public Camera playerCam;
     PlayerStats myStats;
     PlayerManager playerManager;
+    public Transform weaponPart; //location of weapon
+    public Transform weaponPoint;
 
-    Transform weaponPart;   //location of weapon
-    Transform firePoint;    //location of the point that projectiles are instantiated at.
+    public Transform firePoint;    //location of the point that projectiles are instantiated at.
 
     Equipment rangedData;   //info on the current weapon
     int rateOfFire;         //timer before player can shoot again.
@@ -45,16 +46,14 @@ public class PlayerShoot : MonoBehaviour, IPooledObject
         //if there is not a firepoint attached to the player.
         if (firePoint == null)
         {
-            weaponPart = transform.Find("WeaponPart");  //find the weapon part.
-
-            firePoint = weaponPart.transform.Find("FirePoint");     //get the fire point from the children of the weapon part.
+            Debug.Log("HI");
         }
     }
 
     void FixedUpdate()
     {
         //get the fire point position on the weapon part of the character.
-        Vector2 weaponPointPosition = new Vector2(weaponPart.transform.position.x, weaponPart.transform.position.y);
+        Vector2 weaponPointPosition = new Vector2(weaponPoint.transform.position.x, weaponPoint.transform.position.y);
 
         //get the current mousse position in world space.
         Vector2 mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
@@ -66,7 +65,7 @@ public class PlayerShoot : MonoBehaviour, IPooledObject
         angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         //this also moves the weapon part to match the direction that the player is firing.
-        weaponPart.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        weaponPoint.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         //if there is no ranged data OR if the ranged data doesnt match the previous frame,
         //we update the data being used for firing (Equipment change check)

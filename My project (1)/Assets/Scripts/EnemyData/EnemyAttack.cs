@@ -20,9 +20,16 @@ public class EnemyAttack : MonoBehaviour
     Vector2 shootDirection;
     public bool isRunning = false;
 
+    public Animator animator;
+
+public void Awake()
+    {
+        playermanager = PlayerManager.instance;
+    }
+
     public void Start()
     {
-        playermanager = PlayerManager.instance;     //finds the player
+        //finds the player
         enemyStats = GetComponent<EnemyStats>();    //gets the enemy Stats
         playerStats = playermanager.player.GetComponent<PlayerStats>();
         player = playermanager.player.GetComponent<Rigidbody2D>();
@@ -85,6 +92,10 @@ public class EnemyAttack : MonoBehaviour
     public IEnumerator Shoot()  //called from EnemyAI
     {
         isRunning = true;       //prevents shooting before their ROF allows
+        if (animator != null)
+        {
+            animator.SetBool("Reload", true);
+        }
 
         Vector2 playerPosition = new Vector2(player.transform.position.x, player.transform.position.y);
         Vector2 weaponPosition = new Vector2(firePoint.position.x, firePoint.position.y);
@@ -92,16 +103,19 @@ public class EnemyAttack : MonoBehaviour
         float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg;
         OnObjectSpawn(angle);
 
-
-
         enemy.constraints = RigidbodyConstraints2D.None;
         if (recoilMovement != 0)
         {
             RecoilMovement();
         }
         yield return new WaitForSeconds(rateOfFire);
+        
 
-        isRunning = false;
+        isRunning = false; 
+        if (animator != null)
+        {
+            animator.SetBool("Reload", false);
+        }
     }
 
     public void OnObjectSpawn(float angle)
