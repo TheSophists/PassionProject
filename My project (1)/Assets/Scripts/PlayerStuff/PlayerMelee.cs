@@ -43,6 +43,8 @@ public class PlayerMelee : MonoBehaviour
         //get the angle that the projectiles should be instantiated with.
         angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
+        meleeBox.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
         meleeDamage = playerStats.meleeDamage.GetValue();   //get the amount of damage that a melee attack will do.
 
         

@@ -12,6 +12,7 @@ public class DropItem : MonoBehaviour
     {
         if(dropTable != null)
         {
+            Debug.Log("HERE");
             drops = dropTable.drops;    //gets the drops from the drop table Scriptable Object attached to this script
         }
     }

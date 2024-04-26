@@ -8,6 +8,9 @@ public class BouncyObject : MonoBehaviour
     public float maxSpeed;
 
     public Animator animator;
+    public CharacterController2D characterController;
+
+
 
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D collision) 
@@ -23,7 +26,6 @@ public class BouncyObject : MonoBehaviour
             {
                 rb.velocity = new Vector2(rb.velocity.x, maxSpeed);     //set its y velocity to its max (this prevents it from exceeding max velocity)
             }
-
         }
     }
 }

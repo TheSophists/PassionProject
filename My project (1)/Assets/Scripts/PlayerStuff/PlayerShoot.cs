@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections;
+using UnityEditor.Tilemaps;
 
 public class PlayerShoot : MonoBehaviour, IPooledObject
 {
@@ -32,9 +33,11 @@ public class PlayerShoot : MonoBehaviour, IPooledObject
     float angle;        //angle that player is aiming in.
 
     bool equipFlag = false;
+    bool facingRight;
 
     private void Start()
     {
+        facingRight= true;
         //get singletons of equipment, bullet pooler
         equipManager = EquipmentManager.instance;
         objectPooler = ObjectPooler.Instance;
@@ -66,6 +69,14 @@ public class PlayerShoot : MonoBehaviour, IPooledObject
 
         //this also moves the weapon part to match the direction that the player is firing.
         weaponPoint.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        if(direction.x > 0 && facingRight == false)
+        {
+            Flip();
+        }
+        if (direction.x < 0 && facingRight == true)
+        {
+            Flip();
+        }
 
         //if there is no ranged data OR if the ranged data doesnt match the previous frame,
         //we update the data being used for firing (Equipment change check)
@@ -154,5 +165,14 @@ public class PlayerShoot : MonoBehaviour, IPooledObject
         bulletRB.velocity = new Vector2(0, 0);  //set the velocity to 0 for to ensure the bullet doesnt maintain any previous velocity.
 
         bulletRB.AddForce(direction.normalized * bulletVel, ForceMode2D.Impulse);   //add the new force that actually fires the bullet.
+    }
+
+    public void Flip()
+    {
+        facingRight = !facingRight;
+
+        Vector3 theScale = weaponPart.transform.localScale;
+        theScale.y *= -1;
+        weaponPart.transform.localScale = theScale;
     }
 }

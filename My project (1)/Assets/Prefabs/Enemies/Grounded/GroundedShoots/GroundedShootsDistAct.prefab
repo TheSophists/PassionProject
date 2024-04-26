@@ -98,6 +98,7 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 5d3e3685a490fcb4cb93ff9193f28dd3, type: 2}
   bulletPrefab: {fileID: 2422145443301032932, guid: 840a8797d85ff194ba0e99c345eef0bd, type: 3}
   isRunning: 0
+  animator: {fileID: 0}
 --- !u!50 &2759219338064031985
 Rigidbody2D:
   serializedVersion: 4
@@ -152,7 +153,7 @@ MonoBehaviour:
   nextWaypointDistance: 1
   enemyGFX: {fileID: 2759219338071998138}
   start: 0
-  activateDistance: 10
+  activateDistance: 25
   animator: {fileID: 0}
 --- !u!114 &2759219338064031996
 MonoBehaviour:
@@ -190,4 +191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 298027a5d97778d4cb34af77e5434ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 0}
   dropTable: {fileID: 0}
+  drops: []

@@ -43,6 +43,10 @@ PrefabInstance:
       propertyPath: enemyData
       value: 
       objectReference: {fileID: 11400000, guid: ea8ef9c09eae8744cb0a32bf59640226, type: 2}
+    - target: {fileID: 2759219338064031987, guid: 99f8fc93b37e38d49a67c37c1930a265, type: 3}
+      propertyPath: activateDistance
+      value: 38
+      objectReference: {fileID: 0}
     - target: {fileID: 2759219338064031991, guid: 99f8fc93b37e38d49a67c37c1930a265, type: 3}
       propertyPath: data
       value: 

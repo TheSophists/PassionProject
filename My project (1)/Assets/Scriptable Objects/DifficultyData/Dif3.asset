@@ -15,5 +15,5 @@ MonoBehaviour:
   turretQuantity: 3
   flyingShootQuantity: 7
   flyingMeleeQuantity: 7
-  GroundedMeleeQuantity: 7
-  GroundedShootQuantity: 7
+  GroundedMeleeQuantity: 5
+  GroundedShootQuantity: 5

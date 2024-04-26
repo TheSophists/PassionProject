@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dif2
   m_EditorClassIdentifier: 
   turretQuantity: 2
-  flyingShootQuantity: 5
-  flyingMeleeQuantity: 5
-  GroundedMeleeQuantity: 5
-  GroundedShootQuantity: 5
+  flyingShootQuantity: 6
+  flyingMeleeQuantity: 6
+  GroundedMeleeQuantity: 4
+  GroundedShootQuantity: 4

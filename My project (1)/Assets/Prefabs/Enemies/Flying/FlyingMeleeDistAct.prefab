@@ -107,7 +107,8 @@ MonoBehaviour:
   nextWaypointDistance: 1
   enemyGFX: {fileID: 1838658891734706086}
   start: 0
-  activateDistance: 38
+  activateDistance: 25
+  animator: {fileID: 0}
 --- !u!114 &7990647381698620640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +137,7 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: cbf04a059803bc549a2c61d9761ff861, type: 2}
   bulletPrefab: {fileID: 2422145443301032932, guid: 840a8797d85ff194ba0e99c345eef0bd, type: 3}
   isRunning: 0
+  animator: {fileID: 0}
 --- !u!58 &2364324669963862398
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -216,7 +218,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 298027a5d97778d4cb34af77e5434ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 0}
   dropTable: {fileID: 0}
+  drops: []
 --- !u!1 &7990647383297143770
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,9 +11,17 @@ PrefabInstance:
       propertyPath: enemyData
       value: 
       objectReference: {fileID: 11400000, guid: 43b3dd4ba567d5e47937447d8c62dc02, type: 2}
+    - target: {fileID: 1465957462, guid: c54dc1e757466e2438403c0e9e2f63ce, type: 3}
+      propertyPath: activateDistance
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 6819404371924804977, guid: c54dc1e757466e2438403c0e9e2f63ce, type: 3}
       propertyPath: graphMask.value
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6819404371924804979, guid: c54dc1e757466e2438403c0e9e2f63ce, type: 3}
+      propertyPath: m_Radius
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8601947789433603844, guid: c54dc1e757466e2438403c0e9e2f63ce, type: 3}
       propertyPath: m_Name
@@ -22,6 +30,14 @@ PrefabInstance:
     - target: {fileID: 8601947789433603846, guid: c54dc1e757466e2438403c0e9e2f63ce, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8601947789433603846, guid: c54dc1e757466e2438403c0e9e2f63ce, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8601947789433603846, guid: c54dc1e757466e2438403c0e9e2f63ce, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8601947789433603846, guid: c54dc1e757466e2438403c0e9e2f63ce, type: 3}
       propertyPath: m_LocalPosition.x

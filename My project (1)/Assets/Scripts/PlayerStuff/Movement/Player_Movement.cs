@@ -6,7 +6,7 @@ public class Player_Movement : MonoBehaviour
 {
     public CharacterController2D controller;
 
-    public float runSpeed = 0f;
+    float runSpeed = 60f;
 
     public bool playerDirection;
 
@@ -17,6 +17,7 @@ public class Player_Movement : MonoBehaviour
     PlayerManager playerManager;
     PlayerStats playerStats;
     Rigidbody2D playerRb;
+
 
     public void Start()
     {
@@ -42,16 +43,6 @@ public class Player_Movement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
-        }
-
-        //if the player presses the sprint key, while the crouch key is not pressed.
-        if (Input.GetKey(KeyCode.LeftShift) && crouch == false)
-        {
-            runSpeed = 60f;    //set the run speed to the "sprinting" speed.
-        }
-        else
-        {
-            runSpeed = 30f;     //otherwise, usethe default speed.
         }
 
         //if the crouch button is down
